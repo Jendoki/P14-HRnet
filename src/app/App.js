@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Provider } from 'react-redux';
 import { store } from './store';
-import ReactModal from 'react-modal'; // Importer ReactModal
+import ReactModal from 'react-modal';
 import './App.css';
 
 import CreatePage from "../components/pages/create/CreatePage";
@@ -11,7 +11,6 @@ ReactModal.setAppElement('#root');
 
 // TODO
 // - datepicker
-// - list as separate plugin
 // bonus : remove employee from list page
 
 function App() {

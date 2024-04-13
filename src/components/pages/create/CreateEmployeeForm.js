@@ -33,13 +33,13 @@ function CreateEmployeeForm() {
                 newEmployee: {
                     firstName: firstName,
                     lastName: lastName,
-                    dateOfBirth: dob,
                     startDate: startDate,
+                    department: department,
+                    dateOfBirth: dob,
                     street: street,
                     city: city,
                     state: state,
-                    zipcode: zipcode,
-                    department: department
+                    zipcode: zipcode
                 }
             }
         });

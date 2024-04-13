@@ -1,29 +1,13 @@
-import { useDispatch, useStore } from "react-redux";
-import Employee from "./Employee";
+import { useStore } from "react-redux";
 import { listTitles } from "../../../app/data";
+import { TableListing } from "table-listing";
 
-function EmployeesList(props) {
+function EmployeesList() {
     const store = useStore();
-    const dispatch = useDispatch();
     const employees = store.getState().employees
-    console.log(employees)
-
-
-    //make this one as a separate plugin?
-    //pass employees list to list plugin
 
     return (
-        <>
-            <div className="employees-list-container">
-                <h2>Current Employees</h2>
-                <table className="employees-table">
-                    <tr className="employees-table-titles">
-                        {listTitles.map(title => <th>{title}</th>)}
-                    </tr>
-                    {employees.map(employee => <Employee employee={employee} />)}
-                </table>
-            </div>
-        </>
+        <TableListing className="employees-list-container" listTitle="Current Employees" listTitles={listTitles} listElements={employees} />
     )
 }
 
