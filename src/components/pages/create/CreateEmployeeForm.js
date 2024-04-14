@@ -8,23 +8,22 @@ import { departments, states } from "../../../app/data"
 import toNamesList from "../../../app/formatting"
 
 function CreateEmployeeForm() {
+    const defaultDepartmentOption = { label: "Select a department", value: "" };
+    const defaultStateOption = { label: "Select a state", value: "" };
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [dob, setDob] = useState('');
     const [startDate, setStartDate] = useState('');
     const [street, setStreet] = useState('');
     const [city, setCity] = useState('');
-    const [state, setState] = useState('');
+    const [state, setState] = useState(defaultStateOption);
     const [zipcode, setZipcode] = useState('');
-    const [department, setDepartment] = useState('');
+    const [department, setDepartment] = useState(defaultDepartmentOption);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const store = useStore();
     const dispatch = useDispatch();
     const departmentsNames = toNamesList(departments);
     const statesNames = toNamesList(states);
-    const defaultDepartment = departmentsNames[0];
-    const defaultState = statesNames[0];
-
 
     function createEmployee() {
         dispatch({
@@ -34,17 +33,16 @@ function CreateEmployeeForm() {
                     firstName: firstName,
                     lastName: lastName,
                     startDate: startDate,
-                    department: department,
+                    department: department.value,
                     dateOfBirth: dob,
                     street: street,
                     city: city,
-                    state: state,
+                    state: state.value,
                     zipcode: zipcode
                 }
             }
         });
         setIsModalOpen(true);
-        console.log(store.getState())
     }
 
     function onFormSubmit(e) {
@@ -84,9 +82,9 @@ function CreateEmployeeForm() {
                     <div className="input-wrapper">
                         <label htmlFor="state">State</label>
                         <Dropdown
-                            options={statesNames}
-                            onChange={(selectedOption) => setState(selectedOption.value)}
-                            value={defaultState}
+                            options={[defaultStateOption, ...statesNames]}
+                            onChange={(selectedOption) => setState(selectedOption)}
+                            value={state}
                             placeholder="Select a state"
                         />
                     </div>
@@ -98,9 +96,9 @@ function CreateEmployeeForm() {
                 <div className="input-wrapper">
                     <label htmlFor="department">Department</label>
                     <Dropdown
-                        options={departmentsNames}
-                        onChange={(selectedOption) => setDepartment(selectedOption.value)}
-                        value={defaultDepartment}
+                        options={[defaultDepartmentOption, ...departmentsNames]}
+                        onChange={(selectedOption) => setDepartment(selectedOption)}
+                        value={department}
                         placeholder="Select a department"
                     />
                 </div>

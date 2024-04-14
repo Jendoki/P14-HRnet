@@ -10,7 +10,10 @@ import EmployeesListPage from "../components/pages/list/EmployeesListPage";
 ReactModal.setAppElement('#root');
 
 // TODO
-// - datepicker
+// - datepicker - could use native datepicker?
+// table : does it need the sorting?
+// should the employees list be kept in localstorage?
+// lighthouse tests
 // bonus : remove employee from list page
 
 function App() {
