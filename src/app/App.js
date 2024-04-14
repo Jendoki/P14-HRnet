@@ -11,10 +11,9 @@ ReactModal.setAppElement('#root');
 
 // TODO
 // - datepicker - could use native datepicker?
-// table : does it need the sorting?
+// table : does it need the sorting? - did filtering and pagination
 // should the employees list be kept in localstorage?
 // lighthouse tests
-// bonus : remove employee from list page
 
 function App() {
   return (
