@@ -5,7 +5,7 @@ import Button from '../../Button';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import { departments, states } from "../../../app/data"
-import toNamesList from "../../../app/formatting"
+import formatFunctions from "../../../app/formatting"
 
 function CreateEmployeeForm() {
     const defaultDepartmentOption = { label: "Select a department", value: "" };
@@ -20,10 +20,9 @@ function CreateEmployeeForm() {
     const [zipcode, setZipcode] = useState('');
     const [department, setDepartment] = useState(defaultDepartmentOption);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const store = useStore();
     const dispatch = useDispatch();
-    const departmentsNames = toNamesList(departments);
-    const statesNames = toNamesList(states);
+    const departmentsNames = formatFunctions.toNamesList(departments);
+    const statesNames = formatFunctions.toNamesList(states);
 
     function createEmployee() {
         dispatch({
@@ -32,9 +31,9 @@ function CreateEmployeeForm() {
                 newEmployee: {
                     firstName: firstName,
                     lastName: lastName,
-                    startDate: startDate,
+                    startDate: formatFunctions.formatDate(startDate),
                     department: department.value,
-                    dateOfBirth: dob,
+                    dateOfBirth: formatFunctions.formatDate(dob),
                     street: street,
                     city: city,
                     state: state.value,

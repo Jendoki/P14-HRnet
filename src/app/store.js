@@ -11,6 +11,11 @@ const reducer = (currentState, action) => {
                 ...currentState,
                 employees: [...currentState.employees, action.payload.newEmployee]
             };
+        case 'ADD_EMPLOYEES_LIST':
+            return {
+                ...currentState,
+                employees: [...currentState.employees, action.payload.newEmployeesList]
+            };
         default:
             return currentState;
     }
