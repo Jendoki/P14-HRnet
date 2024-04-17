@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useDispatch } from "react-redux";
 import ReactModal from 'react-modal';
 import Button from '../../Button';
@@ -23,6 +23,16 @@ function CreateEmployeeForm() {
     const dispatch = useDispatch();
     const departmentsNames = formatFunctions.toNamesList(departments);
     const statesNames = formatFunctions.toNamesList(states);
+
+
+    const handleStateChange = useCallback((selectedOption) => {
+        setState(selectedOption);
+    }, []);
+
+    const handleDepartmentChange = useCallback((selectedOption) => {
+        setDepartment(selectedOption);
+    }, []);
+
 
     function createEmployee() {
         dispatch({
@@ -78,31 +88,38 @@ function CreateEmployeeForm() {
                         <label htmlFor="city">City</label>
                         <input type="text" id="city" name="city" value={city} onChange={(e) => setCity(e.target.value)} required />
                     </div>
-                    <div className="input-wrapper">
-                        <label htmlFor="state">State</label>
-                        <Dropdown
-                            options={[defaultStateOption, ...statesNames]}
-                            onChange={(selectedOption) => setState(selectedOption)}
-                            value={state}
-                            placeholder="Select a state"
-                        />
-                    </div>
+                    {/* Dropdown for state selection */}
+                    {statesNames.length > 0 && (
+                        <div className="input-wrapper">
+                            <label htmlFor="state">State</label>
+                            <Dropdown
+                                options={[defaultStateOption, ...statesNames]}
+                                onChange={handleStateChange}
+                                value={state}
+                                placeholder="Select a state"
+                            />
+                        </div>
+                    )}
                     <div className="input-wrapper">
                         <label htmlFor="zipcode">Zipcode</label>
                         <input type="number" id="zipcode" name="zipcode" value={zipcode} onChange={(e) => setZipcode(e.target.value)} required />
                     </div>
                 </fieldset>
-                <div className="input-wrapper">
-                    <label htmlFor="department">Department</label>
-                    <Dropdown
-                        options={[defaultDepartmentOption, ...departmentsNames]}
-                        onChange={(selectedOption) => setDepartment(selectedOption)}
-                        value={department}
-                        placeholder="Select a department"
-                    />
-                </div>
+                {/* Dropdown for department selection */}
+                {departmentsNames.length > 0 && (
+                    <div className="input-wrapper">
+                        <label htmlFor="department">Department</label>
+                        <Dropdown
+                            options={[defaultDepartmentOption, ...departmentsNames]}
+                            onChange={handleDepartmentChange}
+                            value={department}
+                            placeholder="Select a department"
+                        />
+                    </div>
+                )}
                 <Button title="Save" />
             </form>
+            {/* Modal for confirmation */}
             <ReactModal className="confirmation-modal" isOpen={isModalOpen} contentLabel="Confirmation that the new employee has been added">
                 <p>The new employee {firstName} {lastName} has been added!</p>
                 <button onClick={() => setIsModalOpen(false)}>Close Modal</button>

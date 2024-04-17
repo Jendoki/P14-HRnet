@@ -9,9 +9,6 @@ import EmployeesListPage from "../components/pages/list/EmployeesListPage";
 
 ReactModal.setAppElement('#root');
 
-// TODO
-// lighthouse tests for each page, pdf & json (check performance for list page)
-
 function App() {
   return (
     <>
