@@ -16,6 +16,11 @@ const reducer = (currentState, action) => {
                 ...currentState,
                 employees: [...currentState.employees, action.payload.newEmployeesList]
             };
+        case 'DELETE_ALL_EMPLOYEES':
+            return {
+                ...currentState,
+                employees: []
+            }
         default:
             return currentState;
     }

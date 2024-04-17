@@ -10,9 +10,7 @@ import EmployeesListPage from "../components/pages/list/EmployeesListPage";
 ReactModal.setAppElement('#root');
 
 // TODO
-// - datepicker - could use native datepicker?
-// table : does it need the sorting? - did filtering and pagination
-// lighthouse tests
+// lighthouse tests for each page, pdf & json (check performance for list page)
 
 function App() {
   return (

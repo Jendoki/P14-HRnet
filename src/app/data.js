@@ -255,7 +255,53 @@ const departments = [
     }
 ]
 
-const listTitles = ["First Name", "Last Name", "Start Date", "Department", "Date of birth", "Street", "City", "State", "Zipcode"]
+const listTitles = [
+    {
+        "label": "First Name",
+        "elementLabel": "firstName",
+        "type": "string"
+    },
+    {
+        "label": "Last Name",
+        "elementLabel": "lastName",
+        "type": "string"
+    },
+    {
+        "label": "Start Date",
+        "elementLabel": "startDate",
+        "type": "date"
+    },
+    {
+        "label": "Department",
+        "elementLabel": "department",
+        "type": "string"
+    },
+    {
+        "label": "Date of birth",
+        "elementLabel": "dateOfBirth",
+        "type": "date"
+    },
+    {
+        "label": "Street",
+        "elementLabel": "street",
+        "type": "string"
+    },
+    {
+        "label": "City",
+        "elementLabel": "city",
+        "type": "string"
+    },
+    {
+        "label": "State",
+        "elementLabel": "state",
+        "type": "string"
+    },
+    {
+        "label": "Zipcode",
+        "elementLabel": "zipcode",
+        "type": "number"
+    }
+]
 
 
 export { departments, states, listTitles };

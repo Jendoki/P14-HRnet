@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch, useStore } from "react-redux";
+import { useDispatch } from "react-redux";
 import ReactModal from 'react-modal';
 import Button from '../../Button';
 import Dropdown from 'react-dropdown';

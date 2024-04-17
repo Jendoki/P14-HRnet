@@ -49,15 +49,24 @@ function EmployeesList() {
         console.log(store.getState());
     }
 
+    function deleteData() {
+        console.log("delete data")
+        setEmployees([])
+        dispatch({
+            type: "DELETE_ALL_EMPLOYEES"
+        });
+    }
+
     return (
         <>
             <div className="import-export-container">
                 <div className="import-export-buttons">
-                    <label class="custom-file-upload">
+                    <label className="custom-file-upload">
                         <input type="file" accept=".json" onChange={importData} />
                         Import employees list
                     </label>
                     <button onClick={() => exportData(employees)}>Export employees list</button>
+                    <button onClick={() => deleteData()}>Delete all employees</button>
                 </div>
             </div>
             <TableListing className="employees-list-container" listTitle="Current Employees" listTitles={listTitles} listElements={employees} />

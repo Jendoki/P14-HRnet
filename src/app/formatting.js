@@ -11,4 +11,6 @@ function formatDate(dateString) {
     return `${day < 10 ? '0' : ''}${day}-${month < 10 ? '0' : ''}${month}-${year}`;
 }
 
-export default { toNamesList, formatDate };
+const formatFunctions = { toNamesList, formatDate }
+
+export default formatFunctions;
